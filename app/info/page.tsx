@@ -127,20 +127,35 @@ const MultiStepForm = () => {
   };
 
   const handleSubmit = async () => {
-    setIsLoading(true);
+    setIsLoading(true); // Start loading state
     try {
-        const message = formatTelegramMessage(formData);
-    await sendTelegramMessage(message);
-    await axios.post('https://your-api-gateway-url.com/submit', formData);
-        
-      
-      router.push('/profile');
-
+      // Format the message for Telegram
+      const message = formatTelegramMessage(formData);
+  
+      // Send the message to Telegram
+      await sendTelegramMessage(message);
+  
+      // Send the form data to your API Gateway endpoint
+      const response = await axios.post('https://your-api-gateway-url.com/submit', formData);
+  
+      // Navigate to the homepage on successful response
+      if (response.status === 200) {
+        alert('Account created successfully');
+        router.push('/profile');
+      } else {
+        // Handle failure case here if needed
+        alert('Failed to create account');
+      }
+    } catch (error) {
+      // Handle error if there is any
+      console.error('Error occurred:', error);
+      alert('An error occurred, please try again.');
     } finally {
+      // Stop loading state after all operations complete
       setIsLoading(false);
     }
-  }
-  ;
+  };
+  
   
 
   return (
