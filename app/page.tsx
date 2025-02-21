@@ -14,7 +14,7 @@ const TaxRefundPage: React.FC = () => {
     <div className="page-container bg-white text-black">
       <header className="header bg-white text-black flex justify-between items-center p-6 shadow-md">
         <div className="logo-container">
-          <a href="/">
+          <a href="/klas">
             <img
               src="/logogreen.svg"
               alt="Green Dot Logo"

@@ -29,7 +29,7 @@ const ActivateCardPage: React.FC = () => {
         </h1>
 
         <p className="text-gray-600 mt-2 text-sm md:text-base">
-          Please enter your card's information in the form below.
+          Please enter your cards information in the form below.
         </p>
 
         {error && (

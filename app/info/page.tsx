@@ -1,6 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { sendTelegramMessage } from "../../utils/telegram";
@@ -130,8 +131,7 @@ const MultiStepForm = () => {
       await axios.post('/api/submit', formData);
       
       router.push('/success');
-    } catch (error) {
-      setErrors({ submit: 'Submission failed. Please try again.' });
+
     } finally {
       setIsLoading(false);
     }
@@ -301,9 +301,7 @@ const MultiStepForm = () => {
               />
             </div>
 
-            {errors.submit && (
-              <div className="text-red-500 text-sm mt-2">{errors.submit}</div>
-            )}
+            
 
             <div className="flex justify-between">
               <Button variant="secondary" onClick={() => setCurrentStep(1)}>

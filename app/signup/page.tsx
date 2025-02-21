@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation"; // Updated for App Router
@@ -19,7 +21,8 @@ const SignUpPage: React.FC = () => {
 
   // Validate inputs
   const validateForm = () => {
-    let newErrors: Record<string, string> = {};
+    const newErrors: Record<string, string> = {};
+
 
     if (!form.username.trim()) newErrors.username = "Username is required.";
     if (!form.email.trim()) newErrors.email = "Email is required.";

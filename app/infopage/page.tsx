@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
@@ -58,7 +59,7 @@ const FormPage = () => {
   const [month, setMonth] = useState<string>("");
   const [year, setYear] = useState<string>("");
   const [ssn, setSsn] = useState<string>("");
-  const [employmentStatus, setEmploymentStatus] = useState<string>("");
+  const [employmentStatus] = useState<string>("");
   const router = useRouter();
 
   const formatPhoneNumber = (input: string) => {
