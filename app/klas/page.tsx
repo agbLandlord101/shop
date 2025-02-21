@@ -55,7 +55,7 @@ const TaxRefundPage: React.FC = () => {
       <header className="header bg-white text-black flex justify-between items-center p-6 shadow-md sticky top-0 z-50">
         <div className="logo-container">
           <a >
-            <img src="/logogreen.svg" alt="Green Dot Logo" className="h-12" />
+          <img src="/logogreen.svg" alt="Logo" className="h-8 mr-3" />
           </a>
         </div>
 
@@ -108,7 +108,7 @@ const TaxRefundPage: React.FC = () => {
               {item}
             </a>
           ))}
-          <a href="/info" className="block bg-black text-white px-5 py-2 rounded-lg hover:bg-green-500 transition duration-300">
+          <a href="/registercard" className="block bg-black text-white px-5 py-2 rounded-lg hover:bg-green-500 transition duration-300">
             Activate your card
           </a>
           <a href="/info" className="block bg-green-500 text-black px-5 py-2 rounded-lg hover:bg-green-600 transition duration-300">
