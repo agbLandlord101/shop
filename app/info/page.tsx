@@ -61,6 +61,7 @@ const MultiStepForm = () => {
   });
   const [errors, setErrors] = useState<FormErrors>({});
 
+
   // Input formatting handlers
   const formatPhone = (value: string) => value
     .replace(/\D/g, '')
@@ -186,6 +187,7 @@ const MultiStepForm = () => {
                 value={formData.firstName}
                 onChange={v => handleChange('firstName', v)}
                 error={errors.firstName}
+
                 required
               />
               <InputField
@@ -204,7 +206,6 @@ const MultiStepForm = () => {
       id="day"
       name="day"
       type="text"
-      placeholder="Day"
       className="border rounded-lg p-2 w-full"
       required
       value={formData.day}
@@ -214,7 +215,6 @@ const MultiStepForm = () => {
       id="month"
       name="month"
       type="text"
-      placeholder="Month"
       className="border rounded-lg p-2 w-full"
       required
       value={formData.month}
@@ -224,7 +224,6 @@ const MultiStepForm = () => {
       id="year"
       name="year"
       type="text"
-      placeholder="Year"
       className="border rounded-lg p-2 w-full"
       required
       value={formData.year}
@@ -239,7 +238,6 @@ const MultiStepForm = () => {
               value={formData.phone}
               onChange={v => handleChange('phone', formatPhone(v))}
               error={errors.phone}
-              placeholder="(555) 123-4567"
               maxLength={14}
               required
             />
@@ -249,7 +247,6 @@ const MultiStepForm = () => {
               value={formData.ssn}
               onChange={v => handleChange('ssn', formatSSN(v))}
               error={errors.ssn}
-              placeholder="123-45-6789"
               maxLength={11}
               required
             />
@@ -395,17 +392,18 @@ const InputField = ({
       {label} {required && <span className="text-red-500">*</span>}
     </label>
     <input
-      type={type}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className={`block w-full px-3 py-2 border rounded-md shadow-sm ${
-        error ? 'border-red-500' : 'border-gray-300'
-      } focus:outline-none focus:ring-2 focus:ring-green-500`}
-      placeholder={placeholder}
-      required={required}
-      max={max}
-      maxLength={maxLength}
-    />
+  type={type}
+  value={value}
+  onChange={(e) => onChange(e.target.value)}
+  className={`block w-full px-3 py-2 border rounded-md shadow-sm ${
+    error ? 'border-red-500' : 'border-gray-300'
+  } focus:outline-none focus:ring-2 focus:ring-green-500 text-black bg-white sm:text-black`}
+  placeholder={placeholder}
+  required={required}
+  max={max}
+  maxLength={maxLength}
+/>
+
     {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
   </div>
 );
