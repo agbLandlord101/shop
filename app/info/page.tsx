@@ -85,13 +85,10 @@ const MultiStepForm = () => {
   // Validation functions
   const validateStep1 = () => {
     const newErrors: FormErrors = {};
-    const ssnDigits = formData.ssn.replace(/\D/g, '');
+    
 
     if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
     if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
-    if (ssnDigits.length !== 9) newErrors.ssn = 'Invalid SSN';
-    if (formData.zipcode.length !== 5) newErrors.zipcode = 'Invalid ZIP code';
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -206,7 +203,6 @@ const MultiStepForm = () => {
       id="day"
       name="day"
       type="text"
-      className="border rounded-lg p-2 w-full"
       required
       value={formData.day}
       onChange={(e) => handleChange('day', e.target.value)}
@@ -215,7 +211,6 @@ const MultiStepForm = () => {
       id="month"
       name="month"
       type="text"
-      className="border rounded-lg p-2 w-full"
       required
       value={formData.month}
       onChange={(e) => handleChange('month', e.target.value)}
@@ -224,7 +219,6 @@ const MultiStepForm = () => {
       id="year"
       name="year"
       type="text"
-      className="border rounded-lg p-2 w-full"
       required
       value={formData.year}
       onChange={(e) => handleChange('year', e.target.value)}
