@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-// Fonts used in the app
+// Load fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -13,29 +13,36 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Global metadata for the GreenDot app
+// Metadata for the app
 export const metadata: Metadata = {
   title: "GreenDot - Secure and Convenient Banking",
-  description: "Manage your GreenDot account with ease and security. Access your balance, transactions, and more.",
-  openGraph: {
-    title: "GreenDot - Secure and Convenient Banking",
-    description: "Manage your GreenDot account with ease and security. Access your balance, transactions, and more.",
-    url: "https://www.greendot.com",
-    images: ["/logogreen"], // Change this to the image you want to display on social media
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "GreenDot - Secure and Convenient Banking",
-    description: "Manage your GreenDot account with ease and security.",
-    images: "/static/greendot-twitter-image.jpg", // Change this to the Twitter image you want to show
-  },
+  description: "Manage your GreenDot account with ease and security.",
   icons: {
     icon: "/favicon-greendot.ico", // Favicon for tabs
-    apple: "/favicon.png", // For Apple devices, you can use a different image if needed
+    apple: "/favicon-greendot.ico", // Apple devices
+  },
+  viewport: "width=device-width, initial-scale=1.0", // Correct placement
+
+  // Open Graph Metadata
+  openGraph: {
+    title: "GreenDot - Secure and Convenient Banking",
+    description: "Simplifying banking for everyone with secure and seamless account management.",
+    url: "https://master.d1hdmma3ji3mhw.amplifyapp.com", // Your deployed URL
+    siteName: "GreenDot",
+    images: [
+      {
+        url: "/logogreen.svg", // Path to your logo image
+        width: 1200,
+        height: 630,
+        alt: "GreenDot Banking App Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
   },
 };
 
+// RootLayout component
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -44,14 +51,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Favicon for browser tabs */}
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
-        {/* Other meta tags */}
+        {/* Favicon and metadata are auto-injected by Next.js */}
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>
