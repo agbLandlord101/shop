@@ -27,8 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "GreenDot - Secure and Convenient Banking",
     description: "Simplifying banking for everyone with secure and seamless account management.",
-    url: "https://master.d1hdmma3ji3mhw.amplifyapp.com", // Your deployed URL
-    siteName: "GreenDot",
+        siteName: "GreenDot",
     images: [
       {
         url: "/logogreen.svg", // Path to your logo image
