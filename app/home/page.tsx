@@ -95,7 +95,7 @@ const TaxRefundPage: React.FC = () => {
             Activate
           </a>
           <a href="/info" className="bg-green-500 text-black px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">
-            Open Account
+            Apply
           </a>
         </div>
       </header>
@@ -206,10 +206,10 @@ const TaxRefundPage: React.FC = () => {
 </p>  
     
     <a
-      href="/refer"
+      href="/info"
       className="inline-block bg-green-500 text-black px-8 py-3 rounded-lg hover:bg-green-600 transition duration-300 text-lg font-semibold"
     >
-      Refer & Win
+      Apply
     </a>
   </div>
   <div className="w-full md:w-1/2">
