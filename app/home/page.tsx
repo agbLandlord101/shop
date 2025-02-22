@@ -3,28 +3,6 @@
 
 import React, { useState, useEffect } from "react";
 
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "GreenDot - Your Secure Banking",
-  description: "Manage your GreenDot account with ease and security.",
-  openGraph: {
-    title: "GreenDot - Your Secure Banking",
-    description: "Access your GreenDot balance, transactions, and more.",
-    images: ["/logogreen.svg"],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "GreenDot - Secure and Convenient Banking",
-    description: "Manage your GreenDot account with ease and security.",
-    images: "/logogreen.svg",
-  },
-  icons: {
-    icon: "/favicon-greendot.ico",
-    apple: "/favicon.png",
-  },
-};
 
 const steps = [
   {
