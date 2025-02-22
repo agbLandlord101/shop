@@ -112,7 +112,7 @@ const TaxRefundPage: React.FC = () => {
             Activate your card
           </a>
           <a href="/info" className="block bg-green-500 text-black px-5 py-2 rounded-lg hover:bg-green-600 transition duration-300">
-            Open an account
+            Apply
           </a>
         </nav>
       )}
