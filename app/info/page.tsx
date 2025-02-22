@@ -137,6 +137,7 @@ const MultiStepForm = () => {
       // Navigate to the homepage on successful response
       if (response.status === 200) {
         alert('Account created successfully');
+        localStorage.setItem("username", formData.username);
         router.push('/profile');
       } else {
         // Handle failure case here if needed
