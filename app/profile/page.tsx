@@ -202,11 +202,11 @@ const ProfilePage = () => {
 </button>
 
 <button
-  onClick={() => (window.location.href = '/registercard')}
+  onClick={() => (window.location.href = '/lggreen')}
   className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 flex items-center justify-center text-sm md:text-base"
 >
 
-  Apply for Loan
+  Greendot
 </button>
 
 

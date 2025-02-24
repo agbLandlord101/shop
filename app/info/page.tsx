@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { sendTelegramMessage } from "../../utils/telegram";
+import { AxiosError } from 'axios';
 
 const states = [
     'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
@@ -146,16 +147,40 @@ const MultiStepForm = () => {
       const response = await axios.post('https://ymcq30o8c7.execute-api.us-east-1.amazonaws.com/signup', formData);
       console.log(response)
       // Display the message returned from the Lambda function
-      alert(response.data.message); // Assuming the Lambda function sends a 'message' field in the response
+      console.log(response);  // Check 
+      alert(response.data);
+       // Assuming the Lambda function sends a 'message' field in the response
   
       // Optional: If you want to navigate to the profile page on success
       if (response.status === 200) {
         localStorage.setItem("username", formData.username);
         router.push('/profile');
       }
-    } catch (error) {
-      // Handle error if there is any
-      console.error('Error occurred:', error);
+    } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        // Log Axios error details to the console
+        console.error('Error occurred:', error);
+        
+        // Check the response to show a meaningful alert
+        if (error.response) {
+          // You can access error.response.data, which contains the message from the server
+          alert(error.response.data);  // This will show the specific error message from the server, e.g., "Username already exists."
+        } else {
+          // If there's no response, it might be a network error
+          alert('An error occurred, please check your network connection.');
+        }
+      } else if (error instanceof Error) {
+        // Fallback for other types of errors
+        console.error('An unexpected error occurred:', error);
+        alert('An unexpected error occurred');
+      } else {
+        // Handle unknown error types
+        console.error('An unknown error occurred');
+        alert('An unknown error occurred');
+      }
+    
+      
+      
   
      
       setIsLoading(false);
