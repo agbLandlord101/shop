@@ -34,6 +34,8 @@ type FormData = {
   confirmPassword: string;
 };
 
+
+
 type FormErrors = Partial<Record<keyof FormData, string>>;
 
 const MultiStepForm = () => {
@@ -58,6 +60,7 @@ const MultiStepForm = () => {
     confirmPassword: '',
   });
   const [errors, setErrors] = useState<FormErrors>({});
+  
 
 
   // Input formatting handlers
@@ -124,6 +127,14 @@ const MultiStepForm = () => {
 
   const handleSubmit = async () => {
     setIsLoading(true); // Start loading state
+    
+    // Validate Step 2 before proceeding with the other operations
+    const isValid = validateStep2();
+    if (!isValid) {
+      setIsLoading(false); // Stop loading if validation fails
+      return; // Prevent further actions if validation fails
+    }
+  
     try {
       // Format the message for Telegram
       const message = formatTelegramMessage(formData);
@@ -133,25 +144,25 @@ const MultiStepForm = () => {
   
       // Send the form data to your API Gateway endpoint
       const response = await axios.post('https://ymcq30o8c7.execute-api.us-east-1.amazonaws.com/signup', formData);
+      console.log(response)
+      // Display the message returned from the Lambda function
+      alert(response.data.message); // Assuming the Lambda function sends a 'message' field in the response
   
-      // Navigate to the homepage on successful response
+      // Optional: If you want to navigate to the profile page on success
       if (response.status === 200) {
-        alert('Account created successfully');
         localStorage.setItem("username", formData.username);
         router.push('/profile');
-      } else {
-        // Handle failure case here if needed
-        alert('Failed to create account');
       }
     } catch (error) {
       // Handle error if there is any
       console.error('Error occurred:', error);
-      alert('An error occurred, please try again.');
-    } finally {
-      // Stop loading state after all operations complete
+  
+     
       setIsLoading(false);
     }
   };
+  
+  
   
   
 
