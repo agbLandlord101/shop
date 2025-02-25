@@ -29,7 +29,7 @@ const ProfilePage = () => {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState<string | null>(null);
   const [showLoanModal, setShowLoanModal] = useState(false);
-  const [pendingLoans, setPendingLoans] = useState<any[]>([]);
+  
   
   
 
@@ -38,16 +38,6 @@ const ProfilePage = () => {
     setUsername(storedUsername);
 
     if (!storedUsername) return;
-    const fetchPendingLoans = async () => {
-        try {
-          // Simulated API call
-          const response = await fetch(`/api/loans/pending/${storedUsername}`);
-          const data = await response.json();
-          setPendingLoans(data);
-        } catch (error) {
-          console.error("Error fetching pending loans:", error);
-        }
-      };
     
     
 
@@ -66,7 +56,7 @@ const ProfilePage = () => {
     };
    
     fetchAccountData();
-    fetchPendingLoans();
+    
     
   }, []);
   
@@ -99,7 +89,7 @@ const ProfilePage = () => {
         {/* Enhanced Header */}
         <header className="bg-white p-6 rounded-2xl shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 space-y-4 sm:space-y-0">
           <div>
-            <h1 className="text-2xl font-bold text-gray-800">Welcome back, {username}!</h1>
+            <h1 className="text-2xl font-bold text-gray-800">Welcome back, {accountData?.firstName}</h1>
             <p className="text-gray-500 text-sm mt-1">
               Last login: {new Date().toLocaleDateString()}
             </p>
@@ -132,58 +122,7 @@ const ProfilePage = () => {
           </div>
         </header>
 
-        {/* Pending Loans Section */}
-        {pendingLoans.length > 0 && (
-          <section className="mb-8">
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-              <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-semibold text-gray-800">
-                  Pending Loan Applications
-                </h2>
-                <span className="text-sm text-gray-500">
-                  {pendingLoans.length} active applications
-                </span>
-              </div>
-
-              <div className="space-y-4">
-                {pendingLoans.map((loan) => (
-                  <div key={loan.id} className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-6 border border-gray-100 rounded-xl hover:bg-gray-50 transition-colors">
-                    <div className="mb-4 sm:mb-0">
-                      <div className="flex items-center space-x-4">
-                        <div className={`w-3 h-3 rounded-full ${loan.status === 'processing' ? 'bg-yellow-500' : 'bg-blue-500'}`} />
-                        <div>
-                          <p className="font-medium text-gray-800">${loan.amount.toLocaleString()}</p>
-                          <p className="text-sm text-gray-500">{loan.purpose}</p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center space-x-6 w-full sm:w-auto">
-                      <div className="text-sm space-y-1">
-                        <p className="text-gray-500">Application Date</p>
-                        <p className="text-gray-800">{new Date(loan.applicationDate).toLocaleDateString()}</p>
-                      </div>
-                      
-                      <div className="text-sm space-y-1">
-                        <p className="text-gray-500">Expected Decision</p>
-                        <p className="text-gray-800">{new Date(loan.expectedDecisionDate).toLocaleDateString()}</p>
-                      </div>
-
-                      
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 border-t border-gray-100 pt-6">
-                <button className="text-gray-600 hover:text-gray-800 text-sm font-medium flex items-center">
-                  View All Loan Applications
-                  <span className="ml-2">→</span>
-                </button>
-              </div>
-            </div>
-          </section>
-        )}
+       
 
         {/* Account Overview Section */}
         <section className="mb-8">
@@ -235,12 +174,12 @@ const ProfilePage = () => {
                 <div className="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl border border-red-100">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-600 mb-1">Active Loan</p>
+                      <p className="text-sm text-gray-600 mb-1">Pending Balance</p>
                       <p className="text-3xl font-bold text-gray-800">
                         ${accountData?.loanAmount?.toLocaleString() ?? "0.00"}
                       </p>
                       <p className="text-xs text-red-500 mt-1">
-                        Disbursed {accountData?.disbursedDays ?? "N/A"} days ago
+                        Available for transfer to Greendot Card
                       </p>
                     </div>
                     <div className="bg-red-600 p-3 rounded-lg">📈</div>
