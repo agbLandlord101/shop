@@ -6,8 +6,8 @@ import React, { useState, useEffect } from "react";
 
 const steps = [
   {
-    title: "Easy Online Loan Application",
-    content: "Our five-minute loan application saves you serious time and travel.",
+    title: "Easy Online  Application",
+    content: "Our five-minute  application saves you serious time and travel.",
   },
   {
     title: "Super-Fast Loan Approval",
@@ -153,7 +153,7 @@ const TaxRefundPage: React.FC = () => {
       <img src="/moneyhand.png" alt="Get Money Quickly" className="w-12 h-12" />
       <div>
         <h3 className="font-bold">Get Your Money Quickly</h3>
-        <p className="text-sm text-gray-600">Finalize your loan application and get your money in as little as 24 hours.</p>
+        <p className="text-sm text-gray-600">Finalize your  application and get your money in as little as 24 hours.</p>
       </div>
     </div>
 
@@ -200,10 +200,10 @@ const TaxRefundPage: React.FC = () => {
 <section className="flex flex-col md:flex-row-reverse items-center p-6 md:p-10 gap-8">
   <div className="w-full md:w-1/2 text-center md:text-left">
     <h2 className="text-3xl md:text-4xl font-bold mb-4">
-      Superfast Loan Approval
+      Superfast  Approval
     </h2>
     <p className="text-lg md:text-xl mb-4">
-  Need a loan fast? GREENDOT makes it easy! Even with low or bad credit, you could get approved in as little as one business day. Just fill out a quick online application, and we’ll deposit your loan directly into your bank account—fast and hassle-free!  
+  Need a funds fast? GREENDOT makes it easy! Even with low or bad credit, you could get approved in as little as one business day. Just fill out a quick online application, and we’ll deposit your loan directly into your bank account—fast and hassle-free!  
 </p>  
     
     <a

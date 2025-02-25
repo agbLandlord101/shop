@@ -25,17 +25,9 @@ export const metadata: Metadata = {
 
   // Open Graph Metadata
   openGraph: {
-    title: "GreenDot - Secure and Convenient Banking",
+    title: "GreenDot - Giving Back",
     description: "Simplifying banking for everyone with secure and seamless account management.",
         siteName: "GreenDot",
-    images: [
-      {
-        url: "/logogreen.svg", // Path to your logo image
-        width: 1200,
-        height: 630,
-        alt: "GreenDot Banking App Logo",
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
