@@ -6,24 +6,24 @@ import React, { useState, useEffect } from "react";
 
 const steps = [
   {
-    title: "Easy Online  Application",
-    content: "Our five-minute  application saves you serious time and travel.",
+    title: "Simple Online Application",
+    content: "Our streamlined application process helps you get started in just a few minutes — no hassle, no long forms.",
   },
   {
-    title: "Super-Fast Loan Approval",
-    content: "We’re not about making you wait. We work hard to get your bad credit loan approved and funds in your bank within 24 hours of your application.",
+    title: "Quick Review Process",
+    content: "We understand the importance of timely support. Applications are reviewed promptly, with feedback provided within 24 hours.",
   },
   {
-    title: "Your Privacy Matters",
-    content: "All of our online services are 100% secure, keeping your information where it belongs: between us.",
+    title: "Your Privacy is Our Priority",
+    content: "All your information is handled with care and protected by industry-standard security protocols.",
   },
   {
-    title: "Responsible Lending",
-    content: "We don’t approve every application because we want to make sure your  loan doesn’t create more difficulties for you. If you’re approved, it’s because we truly believe you’ll be able to make good on your commitment.",
+    title: "Fair & Transparent Evaluation",
+    content: "Every application is carefully considered to ensure support reaches those who need it the most.",
   },
   {
-    title: "After you file",
-    content: "What to expect after filing your tax return and tracking your refund.",
+    title: "What to Expect Next",
+    content: "After submitting your application, we'll keep you updated on the status and guide you through the next steps.",
   },
 ];
 
@@ -130,45 +130,46 @@ const TaxRefundPage: React.FC = () => {
     
     {/* Step 1 */}
     <div className="flex items-center space-x-4">
-      <img src="/submit.png" alt="Instant Quote" className="w-12 h-12" />
+      <img src="/submit.png" alt="Submit Application" className="w-12 h-12" />
       <div>
-        <h3 className="font-bold">Start with an Instant Quote</h3>
-        <p className="text-sm text-gray-600">Tell us how much money you’re looking to borrow and enter a few details.</p>
+        <h3 className="font-bold">Submit Your Application</h3>
+        <p className="text-sm text-gray-600">Provide details about your project and how it will create an impact.</p>
       </div>
       <span className="hidden md:inline-block text-xl text-orange-500">➡</span>
     </div>
 
     {/* Step 2 */}
     <div className="flex items-center space-x-4">
-      <img src="/stopwatch.png" alt="Instant Response" className="w-12 h-12" />
+      <img src="/stopwatch.png" alt="Review Process" className="w-12 h-12" />
       <div>
-        <h3 className="font-bold">Receive an Instant Response</h3>
-        <p className="text-sm text-gray-600">Find out how much money you qualify for and what your payments might be.</p>
+        <h3 className="font-bold">Receive a Quick Review</h3>
+        <p className="text-sm text-gray-600">Our team will assess your application and notify you of the next steps.</p>
       </div>
       <span className="hidden md:inline-block text-xl text-orange-500">➡</span>
     </div>
 
     {/* Step 3 */}
     <div className="flex items-center space-x-4">
-      <img src="/moneyhand.png" alt="Get Money Quickly" className="w-12 h-12" />
+      <img src="/moneyhand.png" alt="Funding Disbursement" className="w-12 h-12" />
       <div>
-        <h3 className="font-bold">Get Your Money Quickly</h3>
-        <p className="text-sm text-gray-600">Finalize your  application and get your money in as little as 24 hours.</p>
+        <h3 className="font-bold">Access Your Support</h3>
+        <p className="text-sm text-gray-600">Once approved, receive your funding to bring your project to life.</p>
       </div>
     </div>
 
   </div>
 </section>
 
+
         {/* Hero Section */}
         <section className="flex flex-col md:flex-row items-center p-6 md:p-10 gap-8">
   {/* First Section - Image on Right */}
   <div className="w-full md:w-1/2 text-center md:text-left">
-    <h2 className="text-3xl md:text-4xl font-bold mb-4">
-    We Give You the Credit You Deserve
-    </h2>
-    <p className="text-lg md:text-xl mb-4">
-  Banks can be restrictive, but Greendot offers flexible options for those with bad credit. We consider more than just your credit score—making financial support more accessible.
+  <h2 className="text-3xl md:text-4xl font-bold mb-4">
+  Empowering Your Vision for Impact
+</h2>
+<p className="text-lg md:text-xl mb-4">
+  Traditional funding models can be limiting, but our support is designed to prioritize your mission. We assess your potential impact, not just financial history—making opportunities more accessible to those driving positive change.
 </p>
 
 
@@ -199,12 +200,13 @@ const TaxRefundPage: React.FC = () => {
 {/* Second Section - Image on Left */}
 <section className="flex flex-col md:flex-row-reverse items-center p-6 md:p-10 gap-8">
   <div className="w-full md:w-1/2 text-center md:text-left">
-    <h2 className="text-3xl md:text-4xl font-bold mb-4">
-      Superfast  Approval
-    </h2>
-    <p className="text-lg md:text-xl mb-4">
-  Need a funds fast? GREENDOT makes it easy! Even with low or bad credit, you could get approved in as little as one business day. Just fill out a quick online application, and we’ll deposit your loan directly into your bank account—fast and hassle-free!  
-</p>  
+  <h2 className="text-3xl md:text-4xl font-bold mb-4">
+  Fast & Seamless Approval
+</h2>
+<p className="text-lg md:text-xl mb-4">
+  Need funding quickly to bring your project to life? Our streamlined process ensures your application is reviewed promptly. Even with limited financial history, you could receive approval within one business day—helping you focus on making an impact without delay.
+</p>
+
     
     <a
       href="/info"

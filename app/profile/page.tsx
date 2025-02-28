@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 
 
@@ -24,11 +25,57 @@ const Spinner = ({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' }) => {
   );
 };
 
+const Popup = ({ onClose }: { onClose: () => void }) => {
+  const router = useRouter();
+
+
+
+  
+  const handleContinue = () => {
+    router.push("/idme"); // Route to your desired page
+  };
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+  <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm text-center">
+    <h2 className="text-xl font-semibold mb-4 text-green-700">Welcome!</h2>
+    <p className="text-gray-600 mb-6">
+      Get started by verifying your identity.
+    </p>
+
+    <div className="flex justify-center gap-4">
+      {/* Continue Button */}
+      <button
+        onClick={handleContinue}
+        className="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300"
+      >
+        Continue
+      </button>
+
+      {/* Cancel Button */}
+      <button
+        onClick={onClose}
+        className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-300 transition duration-300"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+  );
+};
+
 const ProfilePage = () => {
   const [accountData, setAccountData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState<string | null>(null);
   const [showLoanModal, setShowLoanModal] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
   
   
   
@@ -48,6 +95,10 @@ const ProfilePage = () => {
         );
         const data = await response.json();
         setAccountData(data);
+        if (!data.verified) {
+          setShowPopup(true);
+        }
+        console.log(data)
       } catch (error) {
         console.error("Error fetching account data:", error);
       } finally {
@@ -62,7 +113,9 @@ const ProfilePage = () => {
   
 
   return (
+    
     <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row">
+      {showPopup && <Popup onClose={closePopup} />}
       {/* Enhanced Sidebar */}
       <aside className="w-full md:w-64 bg-green-700 text-white p-6 space-y-8">
         <div className="flex items-center space-x-3">
@@ -86,6 +139,7 @@ const ProfilePage = () => {
 
       {/* Main Content */}
       <main className="flex-1 p-8">
+      
         {/* Enhanced Header */}
         <header className="bg-white p-6 rounded-2xl shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 space-y-4 sm:space-y-0">
           <div>
