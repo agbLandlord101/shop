@@ -136,7 +136,7 @@ const MultiStepForm = () => {
   
       // Conditional Navigation based on Employment Status
       if (formData.employmentStatus === 'Social assistance (income supplement)') {
-        router.push('/ssipage'); // Replace with your actual page route
+        router.push('/ssip'); // Replace with your actual page route
         return; // Stop further execution
       }
   

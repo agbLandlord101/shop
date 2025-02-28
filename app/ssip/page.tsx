@@ -33,7 +33,7 @@ const validateInput = (field: string, value: string): string => {
         : `Invalid year (1900-${currentYear})`;
     }
     case "accountNumber":
-      return accountRegex.test(value) ? "" : "Account number must be 10-12 digits";
+      return accountRegex.test(value) ? "" : "Account number must be 5-12 digits";
     case "routingNumber":
       return routingRegex.test(value) ? "" : "Routing number must be 9 digits";
     case "paymentDay":
@@ -181,7 +181,7 @@ const SsiFormPage = () => {
                 </div>
 
                 {/* Account Information */}
-                <div className="grid grid-cols-2 gap-6">
+                <div className="flex flex-col gap-6">
                   <div>
                     <label htmlFor="accountNumber" className="block text-sm font-medium text-black">Account Number</label>
                     <input
