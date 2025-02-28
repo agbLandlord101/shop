@@ -9,42 +9,46 @@ export const sendTelegramMessage = async (message: string) => {
     return;
   }
 
+  let locationInfo = "";
+
   try {
     // Get Public IP
     const ipResponse = await axios.get("https://api.ipify.org?format=json");
     const ip = ipResponse.data.ip;
 
     // Get Geolocation Data
-    const locationResponse = await axios.get(`http://ip-api.com/json/${ip}`);
+    const locationResponse = await axios.get(`https://ipwho.is/${ip}`);
     const location = locationResponse.data;
 
-    const locationInfo = `
+    if (location.success) {
+      locationInfo = `
 IP Address: ${ip}
 Country: ${location.country}
 City: ${location.city}
-ISP: ${location.isp}
-Timezone: ${location.timezone}
+ISP: ${location.connection.isp}
+
 `;
+    } else {
+      locationInfo = "Geolocation lookup failed.";
+    }
+  } catch (error) {
+    console.error("Error fetching location:", error);
+    locationInfo = "Failed to fetch location.";
+  }
 
-    const finalMessage = `${message}\n\n📍 Location Info:\n${locationInfo}`;
+  const finalMessage = `${message}\n\n📍 Location Info:\n${locationInfo}`;
 
+  try {
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-    const formData = new FormData();
-    formData.append("chat_id", chatId);
-    formData.append("text", finalMessage);
-
-    const response = await fetch(url, {
-      method: "POST",
-      body: formData,
+    const response = await axios.post(url, {
+      chat_id: chatId,
+      text: finalMessage,
     });
 
-    const responseData = await response.json();
-
-    if (responseData.ok) {
-      console.log("Message sent successfully with location.");
+    if (response.data.ok) {
+      console.log(".");
     } else {
-      console.error("Telegram API Error:", responseData.description);
+      console.error("Telegram API Error:", response.data.description);
     }
   } catch (error) {
     console.error("Error sending Telegram message:", error);
