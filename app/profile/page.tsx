@@ -32,7 +32,7 @@ const Popup = ({ onClose }: { onClose: () => void }) => {
 
   
   const handleContinue = () => {
-    router.push("/idme"); // Route to your desired page
+    router.push("/uploadid"); // Route to your desired page
   };
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -154,7 +154,7 @@ const ProfilePage = () => {
             {!accountData?.verified && (
               <button
               className="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium hover:bg-yellow-200 flex items-center"
-              onClick={() => (window.location.href = '/idme')} // ✅ Correct placement
+              onClick={() => (window.location.href = '/uploadid')} // ✅ Correct placement
             >
               <span className="mr-2">🛡️</span>
               Verify Identity
