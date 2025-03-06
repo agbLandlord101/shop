@@ -290,7 +290,7 @@ const TaxRefundPage: React.FC = () => {
 
       <footer className="bg-black text-white p-6 text-center">
         <p className="text-sm md:text-base">
-          © 2025 Green Dot Corporation. All rights reserved.
+          © 2025 UNARP Corporation. All rights reserved.
         </p>
       </footer>
     </div>

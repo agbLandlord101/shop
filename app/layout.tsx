@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 
 // Metadata for the app
 export const metadata: Metadata = {
-  title: "GreenDot - Secure and Convenient Banking",
-  description: "Manage your GreenDot account with ease and security.",
+  title: "UNARP - Emergency Financial Assistance",
+  description: "Access quick and secure grants for rent, food, medical bills, and utilities to support you during tough times",
   icons: {
     icon: "/favicon-greendot.ico", // Favicon for tabs
     apple: "/favicon-greendot.ico", // Apple devices
