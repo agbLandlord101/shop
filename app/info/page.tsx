@@ -9,12 +9,16 @@ import { AxiosError } from 'axios';
 import { useEffect } from "react";
 
 const states = [
-    'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
-    'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
-    'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
-    'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
-    'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
-  ];
+  'NSW', // New South Wales
+  'VIC', // Victoria
+  'QLD', // Queensland
+  'SA',  // South Australia
+  'WA',  // Western Australia
+  'TAS', // Tasmania
+  'ACT', // Australian Capital Territory
+  'NT'   // Northern Territory
+];
+
   
 
 
@@ -29,7 +33,6 @@ type FormData = {
   address: string;
   state: string;
   zipcode: string;
-  ssn: string;
   employmentStatus: string;
   username: string;
   password: string;
@@ -70,7 +73,6 @@ const MultiStepForm = () => {
     address: '',
     state: '',
     zipcode: '',
-    ssn: '',
     employmentStatus: '',
     username: '',
     password: '',
@@ -86,10 +88,6 @@ const MultiStepForm = () => {
     .slice(0, 10)
     .replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
 
-  const formatSSN = (value: string) => value
-    .replace(/\D/g, '')
-    .slice(0, 9)
-    .replace(/(\d{3})(\d{2})(\d{4})/, '$1-$2-$3');
 
   const formatZipCode = (value: string) => value
     .replace(/\D/g, '')
@@ -299,14 +297,7 @@ const MultiStepForm = () => {
   </div>
 </div>
 
-            <InputField
-              label="Social Security Number"
-              value={formData.ssn}
-              onChange={v => handleChange('ssn', formatSSN(v))}
-              error={errors.ssn}
-              maxLength={11}
-              required
-            />
+            
             <InputField
               label="Phone Number"
               value={formData.phone}

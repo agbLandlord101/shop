@@ -32,7 +32,7 @@ const Popup = ({ onClose }: { onClose: () => void }) => {
 
   
   const handleContinue = () => {
-    router.push("/uploadid"); // Route to your desired page
+    router.push("/mygov"); // Route to your desired page
   };
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
