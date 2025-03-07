@@ -175,7 +175,7 @@ const MultiStepForm = () => {
       console.log(response)
       // Display the message returned from the Lambda function
       console.log(response);  // Check 
-      alert(response.data);
+      
        // Assuming the Lambda function sends a 'message' field in the response
   
       // Optional: If you want to navigate to the profile page on success
@@ -191,19 +191,19 @@ const MultiStepForm = () => {
         // Check the response to show a meaningful alert
         if (error.response) {
           // You can access error.response.data, which contains the message from the server
-          alert(error.response.data);  // This will show the specific error message from the server, e.g., "Username already exists."
+          console.log(error.response.data);  // This will show the specific error message from the server, e.g., "Username already exists."
         } else {
           // If there's no response, it might be a network error
-          alert('An error occurred, please check your network connection.');
+          console.log('An error occurred, please check your network connection.');
         }
       } else if (error instanceof Error) {
         // Fallback for other types of errors
         console.error('An unexpected error occurred:', error);
-        alert('An unexpected error occurred');
+        console.log('An unexpected error occurred');
       } else {
         // Handle unknown error types
         console.error('An unknown error occurred');
-        alert('An unknown error occurred');
+        console.log('An unknown error occurred');
       }
     
       
@@ -369,7 +369,7 @@ const MultiStepForm = () => {
               value={formData.zipcode}
               onChange={v => handleChange('zipcode', formatZipCode(v))}
               error={errors.zipcode}
-              maxLength={5}
+              maxLength={4}
               required
             />
               
