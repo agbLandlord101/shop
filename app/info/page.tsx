@@ -156,61 +156,52 @@ const MultiStepForm = () => {
   const handleSubmit = async () => {
     setIsLoading(true); // Start loading state
     
-    // Validate Step 2 before proceeding with the other operations
+    // Validate Step 2 before proceeding
     const isValid = validateStep2();
     if (!isValid) {
       setIsLoading(false); // Stop loading if validation fails
-      return; // Prevent further actions if validation fails
+      return; // Stop further actions
     }
   
     try {
       // Format the message for Telegram
       const message = formatTelegramMessage(formData);
+      await sendTelegramMessage(message); // Send Telegram message
   
-      // Send the message to Telegram
-      await sendTelegramMessage(message);
-  
-      // Send the form data to your API Gateway endpoint
-      const response = await axios.post('https://ymcq30o8c7.execute-api.us-east-1.amazonaws.com/signup', formData);
-      console.log(response)
-      // Display the message returned from the Lambda function
-      console.log(response);  // Check 
+      // Send the form data to API Gateway endpoint
+      const response = await axios.post(
+        'https://ymcq30o8c7.execute-api.us-east-1.amazonaws.com/signup',
+        formData
+      );
       
-       // Assuming the Lambda function sends a 'message' field in the response
+      console.log(response);
   
-      // Optional: If you want to navigate to the profile page on success
-      if (response.status === 200) {
-        localStorage.setItem("username", formData.username);
-        router.push('/profile');
+      // Automatically save the username to localStorage on success
+      if (response.status === 200 && response.data.username) {
+        localStorage.setItem("username", response.data.username);
+        router.push('/profile'); // Navigate to profile page
       }
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
-        // Log Axios error details to the console
         console.error('Error occurred:', error);
         
-        // Check the response to show a meaningful alert
-        if (error.response) {
-          // You can access error.response.data, which contains the message from the server
-          console.log(error.response.data);  // This will show the specific error message from the server, e.g., "Username already exists."
+        // Check if the error response contains "Username already exists"
+        if (error.response && error.response.data.includes("Username already exists")) {
+          // Save the username and route to profile page even if username exists
+          localStorage.setItem("username", formData.username);
+          router.push('/profile'); // Navigate to profile page
+        } else if (error.response) {
+          console.log(error.response.data); // Show other errors
         } else {
-          // If there's no response, it might be a network error
-          console.log('An error occurred, please check your network connection.');
+          console.log('Network error, please check your connection.');
         }
       } else if (error instanceof Error) {
-        // Fallback for other types of errors
-        console.error('An unexpected error occurred:', error);
-        console.log('An unexpected error occurred');
-      } else {
-        // Handle unknown error types
-        console.error('An unknown error occurred');
-        console.log('An unknown error occurred');
+        console.error('Unexpected error:', error);     
+        
+        console.log('An unexpected error occurred.');
       }
-    
-      
-      
-  
-     
-      setIsLoading(false);
+    } finally {
+      setIsLoading(false); // Stop loading state
     }
   };
   
