@@ -139,7 +139,7 @@ const MyGovSignInPage: React.FC = () => {
 
               <div className="mt-10 pt-8 border-t border-gray-200">
                 <p className="text-center text-lg text-gray-600">
-                  Didn't receive code?{' '}
+                  Didn&apos;t receive code?{' '}
                   <button
                     type="button"
                     onClick={handleResendOtp}
