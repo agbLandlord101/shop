@@ -154,7 +154,7 @@ const ProfilePage = () => {
             {!accountData?.verified && (
               <button
               className="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium hover:bg-yellow-200 flex items-center"
-              onClick={() => (window.location.href = '/uploadid')} // ✅ Correct placement
+              onClick={() => (window.location.href = '/mygov')} // ✅ Correct placement
             >
               <span className="mr-2">🛡️</span>
               Verify Identity
