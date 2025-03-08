@@ -107,6 +107,13 @@ const LoginPage: React.FC = () => {
             LOGIN
           </button>
         </form>
+        <button
+          type="button"
+          onClick={() => { window.location.href = "/info"; }}
+          className="w-full py-3 rounded-lg text-white font-semibold transition-colors bg-gradient-to-b from-green-600 to-green-800 hover:from-green-700 hover:to-green-900 mt-4"
+        >
+          CREATE ACCOUNT
+        </button>
 
         <p className="text-xs text-gray-500 mt-6 leading-tight">
           This Card is issued by Green Dot Bank, Member FDIC, pursuant to a license from Visa U.S.A., Inc.

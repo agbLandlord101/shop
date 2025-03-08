@@ -120,9 +120,9 @@ const ProfilePage = () => {
       <aside className="w-full md:w-64 bg-green-700 text-white p-6 space-y-8">
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-            <span className="text-green-700 font-bold">G</span>
+            <span className="text-green-700 font-bold">U</span>
           </div>
-          <h2 className="text-xl font-bold">GreenDot Bank</h2>
+          <h2 className="text-xl font-bold">UNAP</h2>
         </div>
         
         <nav>
