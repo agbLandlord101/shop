@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 
 // Metadata for the app
 export const metadata: Metadata = {
-  title: "UNARP - Emergency Financial Assistance",
-  description: "Access quick and secure grants for rent, food, medical bills, and utilities to support you during tough times",
+  title: "GreenDot - Secure and Convenient Banking",
+  description: "Manage your GreenDot account with ease and security.",
   icons: {
     icon: "/favicon-greendot.ico", // Favicon for tabs
     apple: "/favicon-greendot.ico", // Apple devices
@@ -25,15 +25,23 @@ export const metadata: Metadata = {
 
   // Open Graph Metadata
   openGraph: {
-    title: "GreenDot - Giving Back",
-    description: "Simplifying banking for everyone with secure and seamless account management.",
-        siteName: "GreenDot",
+    title: "UNARP - Emergency Financial Assistance",
+    description:
+      "Access quick and secure grants for rent, food, medical bills, and utilities to support you during tough times",
+    siteName: "UNARP",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://unarp.org/unaplogo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "UNARP Assistance",
+      },
+    ],
   },
 };
 
-// RootLayout component
 export default function RootLayout({
   children,
 }: Readonly<{
