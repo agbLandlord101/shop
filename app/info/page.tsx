@@ -83,10 +83,22 @@ const MultiStepForm = () => {
 
 
   // Input formatting handlers
-  const formatPhone = (value: string) => value
-    .replace(/\D/g, '')
-    .slice(0, 10)
-    .replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+  const formatPhone = (value: string): string => {
+    // Remove all non-digit characters
+    const cleaned = value.replace(/\D/g, '').slice(0, 10);
+
+    if (/^04\d{8}$/.test(cleaned)) {
+        // Mobile format: 04XX XXX XXX
+        return cleaned.replace(/^(\d{4})(\d{3})(\d{3})$/, '$1 $2 $3');
+    } else if (/^\d{10}$/.test(cleaned)) {
+        // Landline format: (0X) XXXX XXXX
+        return cleaned.replace(/^(\d{2})(\d{4})(\d{4})$/, '($1) $2 $3');
+    } else {
+        // Invalid format or incomplete number
+        return cleaned;
+    }
+};
+
 
 
   const formatZipCode = (value: string) => value
@@ -116,7 +128,7 @@ const MultiStepForm = () => {
 
     if (!formData.email.match(emailRegex)) newErrors.email = 'Invalid email address';
     if (!formData.address.trim()) newErrors.address = 'Address is required';
-    if (!formData.state) newErrors.state = 'State is required';
+    
     if (!formData.username.trim()) newErrors.username = 'Username is required';
     if (formData.password.length < 8) newErrors.password = 'Password must be at least 8 characters';
     if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = 'Passwords do not match';
@@ -142,10 +154,7 @@ const MultiStepForm = () => {
       localStorage.setItem("formData", JSON.stringify(formData));
   
       // Conditional Navigation based on Employment Status
-      if (formData.employmentStatus === 'Social assistance (income supplement)') {
-        router.push('/ssip'); // Replace with your actual page route
-        return; // Stop further execution
-      }
+      
   
       // If no condition is met, proceed to the next step
       setCurrentStep(prev => prev + 1);

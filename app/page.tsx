@@ -6,25 +6,38 @@ import React, { useState, useEffect } from "react";
 
 const steps = [
   {
+    title: "Earn While You Drive",
+    content: "Turn your daily commute into a money-making opportunity by displaying premium brand decals on your car.",
+  },
+  {
     title: "Simple Online Application",
-    content: "Our streamlined application process helps you get started in just a few minutes — no hassle, no long forms.",
+    content: "Our streamlined application process gets you started in just a few minutes — no long forms or hidden fees.",
   },
   {
-    title: "Quick Review Process",
-    content: "We understand the importance of timely support. Applications are reviewed promptly, with feedback provided within 24 hours.",
+    title: "Fast Review & Approval",
+    content: "We review applications within **24 hours** and notify you immediately if you're selected for a campaign.",
   },
   {
-    title: "Your Privacy is Our Priority",
-    content: "All your information is handled with care and protected by industry-standard security protocols.",
+    title: "Guaranteed Weekly Payments",
+    content: "Receive up to **$750 weekly** directly into your bank account — no delays, no excuses.",
   },
   {
-    title: "Fair & Transparent Evaluation",
-    content: "Every application is carefully considered to ensure support reaches those who need it the most.",
+    title: "Non-Damaging Decals",
+    content: "We use high-quality vinyl decals that won't damage your car's paint or leave residue behind.",
   },
   {
-    title: "What to Expect Next",
-    content: "After submitting your application, we'll keep you updated on the status and guide you through the next steps.",
+    title: "Drive on Your Own Schedule",
+    content: "No fixed hours — just drive your usual routes and earn passively while you do.",
   },
+  {
+    title: "Join the Drive & Earn Community",
+    content: "Be part of a growing community of drivers turning their cars into **moving billboards** and making passive income.",
+  },
+  {
+    title: "What Happens Next?",
+    content: "After approval, we'll guide you through the decal installation process and set you up to start earning immediately.",
+  },
+  
 ];
 
 const TaxRefundPage: React.FC = () => {
@@ -56,17 +69,17 @@ const TaxRefundPage: React.FC = () => {
       <header className="header bg-white text-black flex justify-between items-center p-6 shadow-md sticky top-0 z-50">
         <div className="logo-container">
           <a >
-          <img src="/logogreen.svg" alt="Logo" className="h-8 mr-3" />
+          <img src="/Carvertise_Logo_White.svg" alt="Logo" className="h-8 mr-3" />
           </a>
         </div>
 
         {/* Mobile Navigation */}
         <div className="md:hidden flex items-center space-x-4">
           <a
-            href="/info"
+            href="/apply/personal"
             className="bg-green-500 text-black px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300 text-sm"
           >
-            Apply Now
+            Apply
           </a>
           <button onClick={toggleMenu} className="text-black focus:outline-none">
             <svg
@@ -83,11 +96,7 @@ const TaxRefundPage: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="nav-menu hidden md:flex space-x-8 font-medium text-sm md:text-base">
-          <a href="/products" className="hover:text-green-500 transition duration-300">Products</a>
-          <a href="/benefits" className="hover:text-green-500 transition duration-300">Benefits</a>
-          <a href="/partners" className="hover:text-green-500 transition duration-300">Partners</a>
-          <a href="/about-us" className="hover:text-green-500 transition duration-300">About Us</a>
-          <a href="/help" className="hover:text-green-500 transition duration-300">Help</a>
+        
         </nav>
 
         <div className="hidden md:flex space-x-4">
@@ -95,7 +104,7 @@ const TaxRefundPage: React.FC = () => {
           <a href="/registercard" className="bg-black text-white px-4 py-2 rounded-lg hover:bg-green-500 transition duration-300">
             Activate
           </a>
-          <a href="/info" className="bg-green-500 text-black px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">
+          <a href="/apply/personal" className="bg-green-500 text-black px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">
             Apply
           </a>
         </div>
@@ -104,15 +113,11 @@ const TaxRefundPage: React.FC = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <nav className="md:hidden bg-white text-black space-y-4 p-4">
-          {["Products", "Benefits", "Partners", "About Us", "Help", "Login"].map((item) => (
-            <a key={item} href="/login" className="block hover:text-green-500">
-              {item}
-            </a>
-          ))}
+          
           <a href="/registercard" className="block bg-black text-white px-5 py-2 rounded-lg hover:bg-green-500 transition duration-300">
             Activate your card
           </a>
-          <a href="/info" className="block bg-green-500 text-black px-5 py-2 rounded-lg hover:bg-green-600 transition duration-300">
+          <a href="/apply/personal" className="block bg-green-500 text-black px-5 py-2 rounded-lg hover:bg-green-600 transition duration-300">
             Apply
           </a>
         </nav>
@@ -124,7 +129,7 @@ const TaxRefundPage: React.FC = () => {
   <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
     How It Works
   </h2>
-  
+
   {/* Wrapper for Flexbox Layout */}
   <div className="flex flex-col md:flex-row items-center justify-center md:space-x-10 space-y-6 md:space-y-0">
     
@@ -133,27 +138,27 @@ const TaxRefundPage: React.FC = () => {
       <img src="/submit.png" alt="Submit Application" className="w-12 h-12" />
       <div>
         <h3 className="font-bold">Submit Your Application</h3>
-        <p className="text-sm text-gray-600">Provide details about your project and how it will create an impact.</p>
+        <p className="text-sm text-gray-600">We ask some simple questions about where you normally drive.</p>
       </div>
       <span className="hidden md:inline-block text-xl text-orange-500">➡</span>
     </div>
 
     {/* Step 2 */}
     <div className="flex items-center space-x-4">
-      <img src="/stopwatch.png" alt="Review Process" className="w-12 h-12" />
+      <img src="/stopwatch.png" alt="Get Matched" className="w-12 h-12" />
       <div>
-        <h3 className="font-bold">Receive a Quick Review</h3>
-        <p className="text-sm text-gray-600">Our team will assess your application and notify you of the next steps.</p>
+        <h3 className="font-bold">Get Matched & Get Wrapped</h3>
+        <p className="text-sm text-gray-600">We then match you to a brand that likes your driving habits.</p>
       </div>
       <span className="hidden md:inline-block text-xl text-orange-500">➡</span>
     </div>
 
     {/* Step 3 */}
     <div className="flex items-center space-x-4">
-      <img src="/moneyhand.png" alt="Funding Disbursement" className="w-12 h-12" />
+      <img src="/moneyhand.png" alt="Drive & Earn" className="w-12 h-12" />
       <div>
-        <h3 className="font-bold">Access Your Support</h3>
-        <p className="text-sm text-gray-600">Once approved, receive your funding to bring your project to life.</p>
+        <h3 className="font-bold">Drive & Earn</h3>
+        <p className="text-sm text-gray-600">We wrap your car and then pay you every month through direct deposit.</p>
       </div>
     </div>
 
@@ -161,37 +166,38 @@ const TaxRefundPage: React.FC = () => {
 </section>
 
 
+
         {/* Hero Section */}
         <section className="flex flex-col md:flex-row items-center p-6 md:p-10 gap-8">
   {/* First Section - Image on Right */}
   <div className="w-full md:w-1/2 text-center md:text-left">
   <h2 className="text-3xl md:text-4xl font-bold mb-4">
-  Empowering Your Vision for Impact
+  Drive with Purpose, Earn with Ease
 </h2>
 <p className="text-lg md:text-xl mb-4">
-  Traditional funding models can be limiting, but our support is designed to prioritize your mission. We assess your potential impact, not just financial history—making opportunities more accessible to those driving positive change.
+  Turn your daily commute into a steady income stream. Join our car advertising program and let brands pay you while you drive.
 </p>
 
 
     
     <a
-      href="/login"
+      href="/apply/personal"
       className="inline-block bg-green-500 text-black px-8 py-3 rounded-lg hover:bg-green-600 transition duration-300 text-lg font-semibold"
     >
-      Log in to Enter
+      Join Now
     </a>
   </div>
   <div className="w-full md:w-1/2">
     {/* Mobile Image */}
     <img
-      src="/tax-center.png"
-      alt="Tax Refund Mobile"
+      src="/Driver-Page-scaled.jpg"
+      alt="Drive Advertisement Mobile"
       className="w-full max-w-xl mx-auto rounded-xl shadow-lg md:hidden"
     />
     {/* Desktop Image */}
     <img
-      src="/tax-center.png"
-      alt="Tax Refund Desktop"
+      src="/Driver-Page-scaled.jpg"
+      alt="Drive Advertisement Desktop"
       className="w-full max-w-xl mx-auto rounded-xl shadow-lg hidden md:block"
     />
   </div>
@@ -201,15 +207,15 @@ const TaxRefundPage: React.FC = () => {
 <section className="flex flex-col md:flex-row-reverse items-center p-6 md:p-10 gap-8">
   <div className="w-full md:w-1/2 text-center md:text-left">
   <h2 className="text-3xl md:text-4xl font-bold mb-4">
-  Fast & Seamless Approval
+  Fast & Easy Enrollment
 </h2>
 <p className="text-lg md:text-xl mb-4">
-  Need funding quickly to bring your project to life? Our streamlined process ensures your application is reviewed promptly. Even with limited financial history, you could receive approval within one business day—helping you focus on making an impact without delay.
+  Our simple application process gets you on the road to earning in no time. Submit your application and start driving with confidence.
 </p>
 
     
     <a
-      href="/info"
+      href="/apply/personal"
       className="inline-block bg-green-500 text-black px-8 py-3 rounded-lg hover:bg-green-600 transition duration-300 text-lg font-semibold"
     >
       Apply
@@ -218,18 +224,19 @@ const TaxRefundPage: React.FC = () => {
   <div className="w-full md:w-1/2">
     {/* Mobile Image */}
     <img
-      src="/tax-refund-win10k-mobile.svg"
-      alt="Refer a Friend Mobile"
+      src="/bg-1.png"
+      alt="Fast Enrollment Mobile"
       className="w-full max-w-xl mx-auto rounded-xl shadow-lg md:hidden"
     />
     {/* Desktop Image */}
     <img
-      src="/tax-refund-win10k-desktop.svg"
-      alt="Refer a Friend Desktop"
+      src="/bg-1.png"
+      alt="Fast Enrollment Desktop"
       className="w-full max-w-xl mx-auto rounded-xl shadow-lg hidden md:block"
     />
   </div>
 </section>
+
 
 
 
@@ -290,7 +297,7 @@ const TaxRefundPage: React.FC = () => {
 
       <footer className="bg-black text-white p-6 text-center">
         <p className="text-sm md:text-base">
-          © 2025 UNARP Corporation. All rights reserved.
+          © 2025  Car Advertising Corporation. All rights reserved.
         </p>
       </footer>
     </div>
