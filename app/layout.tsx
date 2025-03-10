@@ -15,28 +15,29 @@ const geistMono = Geist_Mono({
 
 // Metadata for the app
 export const metadata: Metadata = {
-  title: "GreenDot - Secure and Convenient Banking",
-  description: "Manage your GreenDot account with ease and security.",
+  title: "Carvertise - Drive and Earn Money",
+  description:
+    "Turn your car into a source of income by joining Carvertise. Get paid to advertise while you drive!",
   icons: {
-    icon: "/favicon-greendot.ico", // Favicon for tabs
-    apple: "/favicon-greendot.ico", // Apple devices
+    icon: "/favicon-carvertise.ico", // Favicon for tabs
+    apple: "/favicon-carvertise.ico", // Apple devices
   },
-  viewport: "width=device-width, initial-scale=1.0", // Correct placement
+  viewport: "width=device-width, initial-scale=1.0",
 
   // Open Graph Metadata
   openGraph: {
-    title: "UNARP - Emergency Financial Assistance",
+    title: "Carvertise - Earn Money While You Drive",
     description:
-      "Access quick and secure grants for rent, food, medical bills, and utilities to support you during tough times",
-    siteName: "UNARP",
+      "Join Carvertise and get paid to advertise while you drive. No hidden fees, just easy earnings!",
+    siteName: "Carvertise",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://unarp.org/unaplogo.jpg",
+        url: "https://carvert.netlify.app/Carvertise_Logo_White.svg",
         width: 1200,
         height: 630,
-        alt: "UNARP Assistance",
+        alt: "Carvertise Logo",
       },
     ],
   },
