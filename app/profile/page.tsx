@@ -56,7 +56,7 @@ const DashboardPage = () => {
 
     const fetchAccountData = async () => {
       try {
-        const response = await fetch(`/api/driver/${storedUsername}`);
+        const response = await fetch(`https://ymcq30o8c7.execute-api.us-east-1.amazonaws.com/profile/${storedUsername}`);
         const data = await response.json();
         setAccountData(data);
         if (!data.vehicleVerified) setShowPopup(true);
