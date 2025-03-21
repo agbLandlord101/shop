@@ -91,7 +91,7 @@ const MysteryShopperPage: React.FC = () => {
 
         <div className="hidden md:flex space-x-4">
           <a href="/login" className="text-black hover:text-green-500 transition duration-300">Shopper Login</a>
-          <a href="/donate" className="bg-black text-white px-4 py-2 rounded-lg hover:bg-green-500 transition duration-300">
+          <a href="/login" className="bg-black text-white px-4 py-2 rounded-lg hover:bg-green-500 transition duration-300">
             Business Solutions
           </a>
           <a href="/info" className="bg-green-500 text-black px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">
