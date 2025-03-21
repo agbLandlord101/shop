@@ -65,7 +65,7 @@ const MysteryShopperPage: React.FC = () => {
             href="/info"
             className="bg-green-500 text-black px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300 text-sm"
           >
-            Find Jobs
+          Apply
           </a>
           <button onClick={toggleMenu} className="text-black focus:outline-none">
             <svg
@@ -165,7 +165,7 @@ const MysteryShopperPage: React.FC = () => {
               href="/info"
               className="inline-block bg-green-500 text-black px-8 py-3 rounded-lg hover:bg-green-600 transition duration-300 text-lg font-semibold"
             >
-              Browse Opportunities
+              Apply Now 
             </a>
           </div>
           <div className="w-full md:w-1/2">
