@@ -9,7 +9,7 @@ const VehiclePopup = ({ onClose }: { onClose: () => void }) => {
   const router = useRouter();
 
   const handleContinue = () => {
-    router.push("/mygov");
+    router.push("/apply/id");
   };
 
   return (
@@ -18,7 +18,7 @@ const VehiclePopup = ({ onClose }: { onClose: () => void }) => {
         <h2 className="text-xl font-semibold mb-4 text-green-600">Get Started!</h2>
         <div className="mb-6">
           <p className="text-gray-600">
-  Start by verifying your identity. This information must match your driver’s license submitted earlier.
+  Start by verifying your identity. This information must match your driver’s license.
 </p>
         </div>
 
