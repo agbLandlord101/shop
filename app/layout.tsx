@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 
 // Metadata for the app
 export const metadata: Metadata = {
-  title: "Carvertise - Drive and Earn Money",
+  title: "Secret Shopper - Get Paid to Shop",
   description:
-    "Turn your car into a source of income by joining Carvertise. Get paid to advertise while you drive!",
+    "Become a secret shopper and get paid to provide feedback on top brands. Earn money while shopping and dining out!",
   icons: {
     icon: "/favicon-carvertise.ico", // Favicon for tabs
     apple: "/favicon-carvertise.ico", // Apple devices
@@ -26,10 +26,10 @@ export const metadata: Metadata = {
 
   // Open Graph Metadata
   openGraph: {
-    title: "Carvertise - Earn Money While You Drive",
+    title: "Secret Shopper - Earn Money While You Shop",
     description:
-      "Join Carvertise and get paid to advertise while you drive. No hidden fees, just easy earnings!",
-    siteName: "Carvertise",
+      "Join Secret Shopper and get paid to evaluate customer experiences at top brands.",
+    siteName: "Secret Shopper",
     locale: "en_US",
     type: "website",
     images: [
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         url: "https://carvert.netlify.app/Carvertise_Logo_White.svg",
         width: 1200,
         height: 630,
-        alt: "Carvertise Logo",
+        alt: "Secret Shopper Logo",
       },
     ],
   },
