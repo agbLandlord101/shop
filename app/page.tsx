@@ -3,44 +3,30 @@
 
 import React, { useState, useEffect } from "react";
 
-
 const steps = [
   {
-    title: "Earn While You Drive",
-    content: "Turn your daily commute into a money-making opportunity by displaying premium brand decals on your car.",
+    title: "Sign Up Free",
+    content: "Create your account in minutes - no fees or commitments. Start browsing opportunities immediately.",
   },
   {
-    title: "Simple Online Application",
-    content: "Our streamlined application process gets you started in just a few minutes — no long forms or hidden fees.",
+    title: "Receive Assignments",
+    content: "Get matched with local mystery shopping opportunities that fit your interests and schedule.",
   },
   {
-    title: "Fast Review & Approval",
-    content: "We review applications within **24 hours** and notify you immediately if you're selected for a campaign.",
+    title: "Shop & Experience",
+    content: "Visit assigned businesses, make purchases if required, and carefully observe your experience.",
   },
   {
-    title: "Guaranteed Weekly Payments",
-    content: "Receive up to **$750 weekly** directly into your bank account — no delays, no excuses.",
+    title: "Submit Report",
+    content: "Provide detailed feedback through our secure platform about your shopping experience.",
   },
   {
-    title: "Non-Damaging Decals",
-    content: "We use high-quality vinyl decals that won't damage your car's paint or leave residue behind.",
+    title: "Get Paid",
+    content: "Receive payment within 48 hours of report approval. Earnings vary by assignment complexity.",
   },
-  {
-    title: "Drive on Your Own Schedule",
-    content: "No fixed hours — just drive your usual routes and earn passively while you do.",
-  },
-  {
-    title: "Join the Drive & Earn Community",
-    content: "Be part of a growing community of drivers turning their cars into **moving billboards** and making passive income.",
-  },
-  {
-    title: "What Happens Next?",
-    content: "After approval, we'll guide you through the decal installation process and set you up to start earning immediately.",
-  },
-  
 ];
 
-const TaxRefundPage: React.FC = () => {
+const MysteryShopperPage: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(steps[0].title);
   const [isMobile, setIsMobile] = useState(false);
@@ -68,18 +54,18 @@ const TaxRefundPage: React.FC = () => {
     <div className="page-container bg-white text-black">
       <header className="header bg-white text-black flex justify-between items-center p-6 shadow-md sticky top-0 z-50">
         <div className="logo-container">
-          <a >
-          <img src="/Carvertise_Logo_White.svg" alt="Logo" className="h-8 mr-3" />
+          <a>
+            <img src="/logogreen.svg" alt="ShopCheck Logo" className="h-8 mr-3" />
           </a>
         </div>
 
         {/* Mobile Navigation */}
         <div className="md:hidden flex items-center space-x-4">
           <a
-            href="/apply/personal"
+            href="/info"
             className="bg-green-500 text-black px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300 text-sm"
           >
-            Apply
+            Find Jobs
           </a>
           <button onClick={toggleMenu} className="text-black focus:outline-none">
             <svg
@@ -96,16 +82,20 @@ const TaxRefundPage: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="nav-menu hidden md:flex space-x-8 font-medium text-sm md:text-base">
-        
+          <a href="/info" className="hover:text-green-500 transition duration-300">Opportunities</a>
+          <a href="/info" className="hover:text-green-500 transition duration-300">How It Works</a>
+          <a href="/info" className="hover:text-green-500 transition duration-300">Earnings</a>
+          <a href="/info" className="hover:text-green-500 transition duration-300">About Us</a>
+          <a href="/info" className="hover:text-green-500 transition duration-300">FAQ</a>
         </nav>
 
         <div className="hidden md:flex space-x-4">
-          <a href="/login" className="text-black hover:text-green-500 transition duration-300">Log in</a>
-          <a href="/registercard" className="bg-black text-white px-4 py-2 rounded-lg hover:bg-green-500 transition duration-300">
-            Activate
+          <a href="/login" className="text-black hover:text-green-500 transition duration-300">Shopper Login</a>
+          <a href="/donate" className="bg-black text-white px-4 py-2 rounded-lg hover:bg-green-500 transition duration-300">
+            Business Solutions
           </a>
-          <a href="/apply/personal" className="bg-green-500 text-black px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">
-            Apply
+          <a href="/info" className="bg-green-500 text-black px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300">
+            Sign Up
           </a>
         </div>
       </header>
@@ -113,142 +103,117 @@ const TaxRefundPage: React.FC = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <nav className="md:hidden bg-white text-black space-y-4 p-4">
-          
-          <a href="/registercard" className="block bg-black text-white px-5 py-2 rounded-lg hover:bg-green-500 transition duration-300">
-            Activate your card
+          {["Opportunities", "How It Works", "Earnings", "About Us", "FAQ", "Login"].map((item) => (
+            <a key={item} href="/login" className="block hover:text-green-500">
+              {item}
+            </a>
+          ))}
+          <a href="/donate" className="block bg-black text-white px-5 py-2 rounded-lg hover:bg-green-500 transition duration-300">
+            For Businesses
           </a>
-          <a href="/apply/personal" className="block bg-green-500 text-black px-5 py-2 rounded-lg hover:bg-green-600 transition duration-300">
-            Apply
+          <a href="/info" className="block bg-green-500 text-black px-5 py-2 rounded-lg hover:bg-green-600 transition duration-300">
+            Get Started
           </a>
         </nav>
       )}
 
       <main>
-
-      <section className="p-6 md:p-10 bg-gray-50">
-  <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
-    How It Works
-  </h2>
-
-  {/* Wrapper for Flexbox Layout */}
-  <div className="flex flex-col md:flex-row items-center justify-center md:space-x-10 space-y-6 md:space-y-0">
-    
-    {/* Step 1 */}
-    <div className="flex items-center space-x-4">
-      <img src="/submit.png" alt="Submit Application" className="w-12 h-12" />
-      <div>
-        <h3 className="font-bold">Submit Your Application</h3>
-        <p className="text-sm text-gray-600">We ask some simple questions about where you normally drive.</p>
-      </div>
-      <span className="hidden md:inline-block text-xl text-orange-500">➡</span>
-    </div>
-
-    {/* Step 2 */}
-    <div className="flex items-center space-x-4">
-      <img src="/stopwatch.png" alt="Get Matched" className="w-12 h-12" />
-      <div>
-        <h3 className="font-bold">Get Matched & Get Wrapped</h3>
-        <p className="text-sm text-gray-600">We then match you to a brand that likes your driving habits.</p>
-      </div>
-      <span className="hidden md:inline-block text-xl text-orange-500">➡</span>
-    </div>
-
-    {/* Step 3 */}
-    <div className="flex items-center space-x-4">
-      <img src="/moneyhand.png" alt="Drive & Earn" className="w-12 h-12" />
-      <div>
-        <h3 className="font-bold">Drive & Earn</h3>
-        <p className="text-sm text-gray-600">We wrap your car and then pay you every month through direct deposit.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-
-        {/* Hero Section */}
-        <section className="flex flex-col md:flex-row items-center p-6 md:p-10 gap-8">
-  {/* First Section - Image on Right */}
-  <div className="w-full md:w-1/2 text-center md:text-left">
-  <h2 className="text-3xl md:text-4xl font-bold mb-4">
-  Drive with Purpose, Earn with Ease
-</h2>
-<p className="text-lg md:text-xl mb-4">
-  Turn your daily commute into a steady income stream. Join our car advertising program and let brands pay you while you drive.
-</p>
-
-
-    
-    <a
-      href="/apply/personal"
-      className="inline-block bg-green-500 text-black px-8 py-3 rounded-lg hover:bg-green-600 transition duration-300 text-lg font-semibold"
-    >
-      Join Now
-    </a>
-  </div>
-  <div className="w-full md:w-1/2">
-    {/* Mobile Image */}
-    <img
-      src="/Driver-Page-scaled.jpg"
-      alt="Drive Advertisement Mobile"
-      className="w-full max-w-xl mx-auto rounded-xl shadow-lg md:hidden"
-    />
-    {/* Desktop Image */}
-    <img
-      src="/Driver-Page-scaled.jpg"
-      alt="Drive Advertisement Desktop"
-      className="w-full max-w-xl mx-auto rounded-xl shadow-lg hidden md:block"
-    />
-  </div>
-</section>
-
-{/* Second Section - Image on Left */}
-<section className="flex flex-col md:flex-row-reverse items-center p-6 md:p-10 gap-8">
-  <div className="w-full md:w-1/2 text-center md:text-left">
-  <h2 className="text-3xl md:text-4xl font-bold mb-4">
-  Fast & Easy Enrollment
-</h2>
-<p className="text-lg md:text-xl mb-4">
-  Our simple application process gets you on the road to earning in no time. Submit your application and start driving with confidence.
-</p>
-
-    
-    <a
-      href="/apply/personal"
-      className="inline-block bg-green-500 text-black px-8 py-3 rounded-lg hover:bg-green-600 transition duration-300 text-lg font-semibold"
-    >
-      Apply
-    </a>
-  </div>
-  <div className="w-full md:w-1/2">
-    {/* Mobile Image */}
-    <img
-      src="/bg-1.png"
-      alt="Fast Enrollment Mobile"
-      className="w-full max-w-xl mx-auto rounded-xl shadow-lg md:hidden"
-    />
-    {/* Desktop Image */}
-    <img
-      src="/bg-1.png"
-      alt="Fast Enrollment Desktop"
-      className="w-full max-w-xl mx-auto rounded-xl shadow-lg hidden md:block"
-    />
-  </div>
-</section>
-
-
-
-
-
-        {/* Steps Section */}
         <section className="p-6 md:p-10 bg-gray-50">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
-            Complete These Steps to Enter
+            Get Paid to Shop, Eat, Play
+          </h2>
+          
+          <div className="flex flex-col md:flex-row items-center justify-center md:space-x-10 space-y-6 md:space-y-0">
+            <div className="flex items-center space-x-4">
+              <img src="/submit.png" alt="Sign Up" className="w-12 h-12" />
+              <div>
+                <h3 className="font-bold">1. Sign Up Free</h3>
+                <p className="text-sm text-gray-600">Create your profile in minutes and access local opportunities</p>
+              </div>
+              <span className="hidden md:inline-block text-xl text-green-500">➡</span>
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <img src="/stopwatch.png" alt="Complete Tasks" className="w-12 h-12" />
+              <div>
+                <h3 className="font-bold">2. Complete Assignments</h3>
+                <p className="text-sm text-gray-600">Shop, dine, or evaluate services while getting paid</p>
+              </div>
+              <span className="hidden md:inline-block text-xl text-green-500">➡</span>
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <img src="/moneyhand.png" alt="Get Paid" className="w-12 h-12" />
+              <div>
+                <h3 className="font-bold">3. Earn Rewards</h3>
+                <p className="text-sm text-gray-600">Get paid quickly through multiple payment options</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="flex flex-col md:flex-row items-center p-6 md:p-10 gap-8">
+          <div className="w-full md:w-1/2 text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Make an Impact While You Earn
+            </h2>
+            <p className="text-lg md:text-xl mb-4">
+              Your secret shopping experiences help businesses improve customer service, product quality, 
+              and overall experience. Earn money while helping shape better consumer experiences for everyone.
+            </p>
+            <a
+              href="/info"
+              className="inline-block bg-green-500 text-black px-8 py-3 rounded-lg hover:bg-green-600 transition duration-300 text-lg font-semibold"
+            >
+              Browse Opportunities
+            </a>
+          </div>
+          <div className="w-full md:w-1/2">
+            <img
+              src="/tax-center.png"
+              alt="Mystery Shopping"
+              className="w-full max-w-xl mx-auto rounded-xl shadow-lg"
+            />
+          </div>
+        </section>
+
+        <section className="flex flex-col md:flex-row-reverse items-center p-6 md:p-10 gap-8">
+          <div className="w-full md:w-1/2 text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Flexible Opportunities Around You
+            </h2>
+            <div className="text-lg md:text-xl mb-4">
+  <p>Choose from various assignments that fit your lifestyle:</p>
+  <ul className="list-disc pl-6 mt-2">
+    <li>Retail evaluations</li>
+    <li>Dining experiences</li>
+    <li>Service quality assessments</li>
+    <li>Product testing</li>
+  </ul>
+</div>
+
+            <a
+              href="/info"
+              className="inline-block bg-green-500 text-black px-8 py-3 rounded-lg hover:bg-green-600 transition duration-300 text-lg font-semibold"
+            >
+              View Available Jobs
+            </a>
+          </div>
+          <div className="w-full md:w-1/2">
+            <img
+              src="/tax-refund-win10k-desktop.svg"
+              alt="Shopping Opportunities"
+              className="w-full max-w-xl mx-auto rounded-xl shadow-lg"
+            />
+          </div>
+        </section>
+
+        <section className="p-6 md:p-10 bg-gray-50">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
+            How Mystery Shopping Works
           </h2>
 
           {!isMobile ? (
-            // Desktop Tabs
             <div className="max-w-6xl mx-auto">
               <div className="flex flex-wrap justify-center gap-2 mb-6">
                 {steps.map((step) => (
@@ -270,7 +235,6 @@ const TaxRefundPage: React.FC = () => {
               </div>
             </div>
           ) : (
-            // Mobile Accordion
             <div className="max-w-2xl mx-auto">
               {steps.map((step, index) => (
                 <div key={index} className="mb-4 bg-white rounded-xl shadow-sm overflow-hidden">
@@ -297,11 +261,11 @@ const TaxRefundPage: React.FC = () => {
 
       <footer className="bg-black text-white p-6 text-center">
         <p className="text-sm md:text-base">
-          © 2025  Car Advertising Corporation. All rights reserved.
+          © 2025 ShopCheck Mystery Shopping Network. All rights reserved.
         </p>
       </footer>
     </div>
   );
 };
 
-export default TaxRefundPage;
+export default MysteryShopperPage;
